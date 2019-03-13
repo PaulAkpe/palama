@@ -1,13 +1,707 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<meta charset="UTF-8" />
+		<title>{% block title %}Orientation post-bac{% endblock %}</title>
+			{% block stylesheets %}{% endblock %}
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="{{ absolute_url(asset('css/style.css') ) }}"
+					  rel="stylesheet">
     </head>
-    <body>
-        {% block body %}{% endblock %}
+	<style type="text/css">
+<!-- Feuille de style exceptionnelle -->
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+}
+.navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/*
+headeer top
+*/
+.topbar{
+  background-color: #153756;
+  padding: 0;
+}
+
+.topbar .container .row {
+  margin:-7px;
+  padding:0;
+}
+
+.topbar .container .row .col-md-12 { 
+  padding:0;
+}
+
+.topbar p{
+  margin:0;
+  display:inline-block;
+  font-size: 13px;
+  color: #f1f6ff;
+}
+
+.topbar p > i{
+  margin-right:5px;
+}
+.topbar p:last-child{
+  text-align:right;
+} 
+
+header .navbar {
+    margin-bottom: 0;
+}
+
+.topbar li.topbar {
+    display: inline;
+    padding-right: 18px;
+    line-height: 52px;
+    transition: all .3s linear;
+}
+
+.topbar li.topbar:hover {
+    color: #1bbde8;
+}
+
+.topbar ul.info i {
+    color: #131313;
+    font-style: normal;
+    margin-right: 8px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+.topbar ul.info li {
+    float: right;
+    padding-left: 30px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 44px;
+}
+
+.topbar ul.info i span {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 18px;
+}
+
+ul.social-network {
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+ul.social-network li {
+  border:none;  
+  margin:0;
+}
+
+ul.social-network li i {
+  margin:0;
+}
+
+ul.social-network li {
+    display:inline;
+    margin: 0 5px;
+    border: 0px solid #2D2D2D;
+    padding: 5px 0 0;
+    width: 32px;
+    display: inline-block;
+    text-align: center;
+    height: 32px;
+    vertical-align: baseline;
+    color: #000;
+}
+
+ul.social-network {
+  list-style: none;
+  margin: 5px 0 10px -25px;
+  float: right;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: .3s ease-out;
+    color: #fff;
+}
+a {
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight:80
+}
+
+li {
+    list-style-type: none;
+	color:white
+}
+.bg-image-full {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.bg-dark {
+    background-color: #222!important;
+}
+
+.mx-background-top-linear {
+    background: -webkit-linear-gradient(45deg, #54d400 20%, #122e48 20%);
+    background: -webkit-linear-gradient(left, #54d400 20%, #122e48 20%);
+    background: linear-gradient(45deg, #54d400 20%, #122e48 20%);
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+li span{
+	color:white;
+}
+
+footer.nb-footer {
+background: #222;
+border-top: 4px solid #b78c33; }
+footer.nb-footer .about {
+margin: 0 auto;
+margin-top: 40px;
+max-width: 1170px;
+text-align: center; }
+footer.nb-footer .about p {
+font-size: 13px;
+color: #999;
+margin-top: 30px; }
+footer.nb-footer .about .social-media {
+margin-top: 15px; }
+footer.nb-footer .about .social-media ul li a {
+display: inline-block;
+width: 45px;
+height: 45px;
+line-height: 45px;
+border-radius: 50%;
+font-size: 16px;
+color: #b78c33;
+border: 1px solid rgba(255, 255, 255, 0.3); }
+footer.nb-footer .about .social-media ul li a:hover {
+background: #b78c33;
+color: #fff;
+border-color: #b78c33; }
+footer.nb-footer .footer-info-single {
+margin-top: 30px; }
+footer.nb-footer .footer-info-single .title {
+color: #aaa;
+text-transform: uppercase;
+font-size: 16px;
+border-left: 4px solid #b78c33;
+padding-left: 5px; }
+footer.nb-footer .footer-info-single ul li a {
+display: block;
+color: #aaa;
+padding: 2px 0; }
+footer.nb-footer .footer-info-single ul li a:hover {
+color: #b78c33; }
+footer.nb-footer .footer-info-single p {
+font-size: 13px;
+line-height: 20px;
+color: #aaa; }
+footer.nb-footer .copyright {
+margin-top: 15px;
+background: #111;
+padding: 7px 0;
+color: #999; }
+footer.nb-footer .copyright p {
+margin: 0;
+padding: 0; }
+	</style>
+	
+<!-- FIN feuille de style -->
+
+
+<!-- Debut body -->
+	
+    <body >
+	
+
+    <!-- Navigation bar -->
+		<div class="fixed-top">
+		
+		   <header class="topbar">
+			  <div class="container">
+				<div class="row">
+				  <!-- social icon-->
+				  <div class="col-sm-12">
+					<ul class="social-network">
+					  <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
+					  <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
+					  <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
+					  <li><a class="waves-effect waves-dark" href="#" style="text-decoration:none"><i class="fa fa-user"></i></a></li>
+					</ul>
+				  </div>
+
+				</div>
+			  </div>
+		   </header>
+		   
+		   
+		   <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+				
+				  <a class="navbar-brand" href="index.html" style="text-transform: uppercase;margin-left:2px"> RTF.COM</a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+			 
+				 <div class="collapse navbar-collapse" id="navbarResponsive">
+
+					<ul class="navbar-nav ml-auto" style="" >
+
+				  
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  <span >COLLEGES & LYCEES</span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+					  
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+							<span class="text-uppercase text-white">SUPERIEUR</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+
+
+					</div>
+				  </li>
+				  
+				  
+						<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  <span>SUPERIEUR</span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+						   <span class="text-uppercase text-white">Category 3</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+							
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+
+
+					</div>
+				  </li>
+				  
+				  
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 <span> EXAMENS</span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+							<span class="text-uppercase text-white">Category 2</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+
+
+					</div>
+				  </li>
+				  
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 <span> ORIENTATION</span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+							<span class="text-uppercase text-white">Category 2</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+
+
+					</div>
+				  </li>
+				  
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 <span> METIERS </span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+						   <span class="text-uppercase text-white">Category 3</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+							
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+
+
+					</div>
+				  </li>
+				  
+						<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 <span><b>JOBS, STAGES, EMPLOI</b></span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+							<span class="text-uppercase text-white">Category 2</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							
+							
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+					</div>
+				  </li>
+				  
+				  
+				  				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					 <span> STYLE DE VIE</span>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+					  <div class="container">
+						<div class="row">
+						  <div class="col-md-4">
+							<span class="text-uppercase text-white">Category 2</span>
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<ul class="nav flex-column">
+							<li class="nav-item">
+							  <a class="nav-link active" href="#">Active</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+							<li class="nav-item">
+							  <a class="nav-link" href="#">Link item</a>
+							</li>
+						  </ul>
+						  </div>
+						  <!-- /.col-md-4  -->
+						  <div class="col-md-4">
+							<a href="">
+							  <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+							</a>
+							<p class="text-white">Short image call to action</p>
+
+						  </div>
+						  <!-- /.col-md-4  -->
+						</div>
+					  </div>
+					  <!--  /.container  -->
+
+
+					</div>
+				  </li>
+				  
+				  
+				  <li class="nav-item">
+					<a class="nav-link" href="#"><span>COACHING</span></a>
+				  </li>
+				  
+					</ul>
+				  </div>
+			  </nav>
+					   
+					   
+					   
+					
+
+    {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+    <script src="{{ absolute_url(asset('js/jquery.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('js/bootstrap.min.js')) }}"></script>
+    <script src="{{ absolute_url(asset('js/navigation.js')) }}"></script>
+	<script src="{{ absolute_url(asset('js/javascript.js')) }}"></script>
+    <script>
+        $(document).ready(function(){
+            
+        });
+    </script>
+
     </body>
+	<!-- FIN Body -->
 </html>
